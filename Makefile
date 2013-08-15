@@ -2,6 +2,8 @@
 
 .PHONY: vendor
 
+WR         = node_modules/.bin/wr
+SUPERVISOR = node_modules/.bin/node-supervisor
 BROWSERIFY = node_modules/.bin/browserify
 COFFEE     = node_modules/.bin/coffee
 COFFEEC    = $(COFFEE) --bare --compile
@@ -23,8 +25,20 @@ clean-all: clean
 
 #-------------------------------------------------------------------------------
 watch:
-	make build
-	@wr "make build" tools scripts
+	@$(SUPERVISOR) \
+	    --quiet \
+	    --watch scripts \
+	    --extensions coffee \
+	    --no-restart-on error \
+	    --exec make \
+	    -- build-n-serve
+
+#-------------------------------------------------------------------------------
+build-n-serve: build serve
+
+#-------------------------------------------------------------------------------
+serve:
+	@serve
 
 #-------------------------------------------------------------------------------
 build:

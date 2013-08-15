@@ -19,10 +19,11 @@
     "dependencies": {
         "backbone":         "1.0.x",
         "coffee-script":    "1.6.x",
-        "underscore":       "1.4.x"
+        "underscore":       "1.5.x"
     },
     "devDependencies": {
-        "browserify":       "2.22.x",
+        "browserify":       "2.26.x",
+        "supervisor":       "0.5.x",
         "wr":               "1.2.x"
     },
     "repository": {

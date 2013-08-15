@@ -1,7 +1,11 @@
 # Licensed under the Apache License. See footer for details.
 
-require "./utils"
-require "./board"
+_        = require "underscore"
+d3       = require "d3"
+backbone = require "backbone"
+
+utils = require "./utils"
+board = require "./board"
 
 #-------------------------------------------------------------------------------
 # Copyright 2013 Patrick Mueller

@@ -62,8 +62,8 @@ buildHexes = ->
     xIncrement  = HEX_WIDTH * 3/4  
     yIncrement  = HEX_HEIGHT
     
-    for col in [1...HEX_COLS]
-        for row in [1...HEX_ROWS]
+    for col in [1..HEX_COLS]
+        for row in [1..HEX_ROWS]
             odd = !!(col % 2)
             continue if odd and (row == 1)
     
@@ -93,13 +93,21 @@ buildPieceImages = ->
     return
 
 #-------------------------------------------------------------------------------
-directions =
+directionsEven =
     0: [ 0, -1]
     1: [ 1,  0]
     2: [ 1,  1]
     3: [ 0,  1]
-    4: [-1,  0]
-    5: [-1, -1]
+    4: [-1,  1]
+    5: [-1,  0]
+
+directionsOdd =
+    0: [ 0, -1]
+    1: [ 1, -1]
+    2: [ 1,  0]
+    3: [ 0,  1]
+    4: [-1, -1]
+    5: [-1,  0]
 
 #-------------------------------------------------------------------------------
 buildEdges = ->
@@ -108,6 +116,7 @@ buildEdges = ->
         hex.edges = {}
 
         odd = !!(hex.col % 2)
+        directions = if odd then directionsOdd else directionsEven
 
         for dirName, dirOffset of directions
             cCol  = hex.col + dirOffset[0]
@@ -128,6 +137,22 @@ buildEdges = ->
     for rubble in RUBBLE
         hex1 = board.hexes[rubble[0]]
         hex2 = board.hexes[rubble[1]]
+
+        if !hex1
+            console.log "hex not found: #{rubble[0]}"
+            continue
+
+        if !hex2
+            console.log "hex not found: #{rubble[1]}"
+            continue
+
+        if !hex1.edges[hex2.name]
+            console.log "hex edge not not found: #{hex1.name}-#{hex2.name}"
+            continue
+
+        if !hex2.edges[hex1.name]
+            console.log "hex edge not not found: #{hex2.name}-#{hex1.name}"
+            continue
 
         hex1.edges[hex2.name].isRubble = true
         hex2.edges[hex1.name].isRubble = true
