@@ -1,0 +1,32 @@
+{
+    "name": "ogre-pa",
+    "description": "a play-aid for the game Ogre",
+    "author": "Patrick Mueller",
+    "version": "0.1.0",
+    "tags": [
+        "game"
+    ],
+    "licenses": [
+        {
+            "type": "Apache License, Version 2.0"
+        }
+    ],
+    "directories": {
+        "lib": "./lib"
+    },
+    "homepage": "https://github.com/pmuellr/ogre-pa",
+    "bugs":     "https://github.com/pmuellr/ogre-pa/issues",
+    "dependencies": {
+        "backbone":         "1.0.x",
+        "coffee-script":    "1.6.x",
+        "underscore":       "1.4.x"
+    },
+    "devDependencies": {
+        "browserify":       "2.22.x",
+        "wr":               "1.2.x"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/pmuellr/ogre-pa"
+    }
+}
