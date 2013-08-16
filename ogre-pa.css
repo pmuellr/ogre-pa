@@ -1,0 +1,21 @@
+body {
+    margin:     0;
+}
+
+.diag-edge-line {
+    stroke:         green;
+    stroke-width:   5;
+    opacity:        0.0;
+}
+
+.diag-rubble-line {
+    stroke:         yellow;
+    stroke-width:   5;
+    opacity:        0.4;
+}
+
+.diag-crater-line {
+    stroke:         red;
+    stroke-width:   5;
+    opacity:        0.4;
+}

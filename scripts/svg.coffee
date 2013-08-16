@@ -1,13 +1,22 @@
 # Licensed under the Apache License. See footer for details.
 
-_        = require "underscore"
-d3       = require "d3"
-backbone = require "backbone"
+svg = exports
 
-utils = require "./utils"
-board = require "./board"
+NS_SVG   = "http://www.w3.org/2000/svg"
+NS_XLINK = "http://www.w3.org/1999/xlink"
 
-require "./ui"
+#-------------------------------------------------------------------------------
+svg.createElement = (name) ->
+    return document.createElementNS NS_SVG, name
+
+    return element
+
+#-------------------------------------------------------------------------------
+svg.createImageElement = (url) ->
+    image = svg.createElement "image"
+    image.setAttributeNS NS_XLINK, "href", url
+
+    return image
 
 #-------------------------------------------------------------------------------
 # Copyright 2013 Patrick Mueller
